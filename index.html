@@ -13,7 +13,6 @@
             color: #333;
         }
 
-        /* Estilos do Cabeçalho */
         header {
             background-color: #1e90ff; /* Azul Céu Intenso */
             padding: 20px;
@@ -25,7 +24,6 @@
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        /* Estilos do Menu de Navegação */
         nav {
             display: flex;
             justify-content: center;
@@ -51,7 +49,6 @@
             transform: scale(1.1);
         }
 
-        /* Estilo do Conteúdo */
         .tab-content {
             display: none;
             padding: 30px;
@@ -68,7 +65,6 @@
             transform: translateY(0);
         }
 
-        /* Botão de links */
         .link-button {
             display: inline-block;
             padding: 15px 25px;
@@ -86,17 +82,6 @@
             transform: scale(1.05);
         }
 
-        /* Links normais */
-        a {
-            color: blue;
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        /* Rodapé */
         footer {
             background-color: #4682b4;
             padding: 20px;
@@ -104,7 +89,6 @@
             color: white;
         }
 
-        /* Botão de compartilhar */
         .copy-link-button {
             background-color: #1e90ff;
             color: white;
@@ -119,7 +103,6 @@
             background-color: #4682b4;
         }
 
-        /* Estilo de layout das colunas na aba Consolidado */
         .consolidado-container {
             display: flex;
             justify-content: space-between;
@@ -151,6 +134,41 @@
         .col p {
             color: #333;
         }
+
+        /* Estilo para sub-seções de Acesso a Informações */
+        .info-section {
+            width: 48%;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: #d3eaf7;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .info-section img {
+            display: none;
+            width: 100%;
+            height: auto;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+
+        .info-section h3 {
+            margin-bottom: 15px;
+            color: #1e90ff;
+        }
+
+        .info-section:hover {
+            transform: scale(1.05);
+        }
+
+        /* Estilo para mostrar as imagens ao clicar */
+        .info-section.active img {
+            display: block;
+        }
     </style>
     <script>
         function showTabContent(tabId) {
@@ -162,14 +180,9 @@
             activeContent.classList.add('active');
         }
 
-        function copyLink() {
-            var dummy = document.createElement('textarea');
-            document.body.appendChild(dummy);
-            dummy.value = window.location.href; // URL da página
-            dummy.select();
-            document.execCommand('copy');
-            document.body.removeChild(dummy);
-            alert('Link copiado para a área de transferência!');
+        function toggleSection(sectionId) {
+            var section = document.getElementById(sectionId);
+            section.classList.toggle('active');
         }
     </script>
 </head>
@@ -186,7 +199,7 @@
         <a onclick="showTabContent('hora-a-hora')">Hora a Hora</a>
         <a onclick="showTabContent('qualidade')">Qualidade</a>
         <a onclick="showTabContent('consolidado')">Consolidado</a>
-        <a onclick="showTabContent('acesso-info')">Acesso a Informações</a> <!-- Nova Aba -->
+        <a onclick="showTabContent('acesso-info')">Acesso a Informações</a>
     </nav>
 
     <!-- Conteúdo das Abas -->
@@ -198,25 +211,15 @@
             <a href="https://www.google.com/url?q=https%3A%2F%2Fback.pontotel.com.br%2Fapi%2Fredirect-saml%2Fbateponto%2Fbrasilcard-pontotel&sa=D&sntz=1&usg=AOvVaw3kUPN-qId0m2P6JQXPbcDK" target="_blank" class="link-button">Acessar Pontotel</a>
             <a href="https://10.20.225.35/PortalCDT/(S(fhafub454dukv5nv1tpzi155))/Pages/index.aspx" target="_blank" class="link-button">Acessar Cs</a>
         </div>
-
-        <!-- Botão de compartilhar link -->
-        <div>
-            <button class="copy-link-button" onclick="copyLink()">Compartilhar Link do Site</button>
-        </div>
+        <button class="copy-link-button" onclick="copyLink()">Compartilhar Link do Site</button>
     </div>
 
     <div id="hora-a-hora" class="tab-content">
         <h2>Hora a Hora</h2>
         <div>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4q0mpHN58o0RCM0AI3GZO8Vc7W-EH_gTkXgoSMFGtm6JdAA/viewform?pli=1&pli=1" target="_blank" class="link-button">Link Acordos - Negociação e Cobrança</a>
-            <a href="https://lookerstudio.google.com/reporting/e73ca503-25be-43b8-a622-c83c3120f1de/page/6C1DE" target="_blank" class="link-button">Link Acompanhamento - Acordos</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4q0mpHN58o0RCM0AI3GZO8Vc7W-EH_gTkXgoSMFGtm6JdAA/viewform?pli=1&pli=1" target="_blank" class="link-button">Acordos - Negociação e Cobrança</a>
+            <a href="https://lookerstudio.google.com/reporting/e73ca503-25be-43b8-a622-c83c3120f1de/page/6C1DE" target="_blank" class="link-button">Acompanhamento - Acordos</a>
         </div>
-    </div>
-
-    <div id="qualidade" class="tab-content">
-        <h2>Qualidade</h2>
-        <p>Acesse a planilha de qualidade clicando no botão abaixo:</p>
-        <a href="https://docs.google.com/spreadsheets/d/1Ruu-ijfFU6cHlw1y0BYbJdEDdXrdaVZ84Xeg4Tw3ZY8/edit?gid=1777823094#gid=1777823094" target="_blank" class="link-button">Acessar Planilha de Qualidade</a>
     </div>
 
     <div id="consolidado" class="tab-content">
@@ -225,39 +228,53 @@
             <div class="col">
                 <h3>Receptivo</h3>
                 <p>Dados e relatórios de atendimento receptivo.</p>
-                <img src="recept.png" alt="Imagem Receptivo">
+                <img src="C:/Users/FRANCINALDO.SANTOS/Downloads/image_2024_10_11T20_20_36_070Z.png" alt="Imagem Receptivo">
             </div>
             <div class="col">
                 <h3>Cobrança</h3>
-                <p>Dados e relatórios de atendimento de cobrança.</p>
-                <img src="atv.png" alt="Imagem Cobrança">
+                <p>Dados e relatórios de cobrança.</p>
+                <img src="C:/Users/FRANCI~1.SAN/AppData/Local/Temp/f0f4aa2998bc6a8dd1a1ffa55271e97c79b26114e67d9dd359c08751ecb57754.png" alt="Imagem Cobrança">
             </div>
         </div>
     </div>
 
-    <!-- Nova aba - Acesso a Informações -->
     <div id="acesso-info" class="tab-content">
         <h2>Acesso a Informações</h2>
-        <nav>
-            <a onclick="showTabContent('escala')">Escala</a>
-            <a onclick="showTabContent('campanha')">Campanha</a>
-            <a onclick="showTabContent('baixas-pagamentos')">Baixas de Pagamentos</a>
-            <a onclick="showTabContent('avisos-informacoes')">Avisos / Informações</a>
-        </nav>
-
-        <div id="campanha">
-            <h3>Campanha</h3>
-            <img src="campa.png" alt="Campanha">
-
-              <div id="escala">
-            <h3>Escala</h3>
-            <img src="esacala.png" alt="Escala">
+        <div class="consolidado-container">
+            <div class="info-section" onclick="toggleSection('escala-section')">
+                <h3>Escala</h3>
+                <img id="escala-section" src="#" alt="Imagem Escala">
+            </div>
+            <div class="info-section" onclick="toggleSection('campanha-section')">
+                <h3>Campanha</h3>
+                <img id="campanha-section" src="C:/Users/FRANCI~1.SAN/AppData/Local/Temp/bcd427bb91275db8c22637532e3eded57eb41322d5a19bfb5cdaa2485a201a1a.png" alt="Imagem Campanha">
+            </div>
         </div>
+
+        <div class="consolidado-container">
+            <div class="info-section" onclick="toggleSection('baixas-section')">
+                <h3>Baixas de Pagamentos</h3>
+                <img id="baixas-section" src="#" alt="Imagem Baixas">
+            </div>
+            <div class="info-section" onclick="toggleSection('avisos-section')">
+                <h3>Avisos / Informações</h3>
+                <img id="avisos-section" src="#" alt="Imagem Avisos">
+            </div>
         </div>
     </div>
 
     <footer>
-        <p>© 2024 Brasil Card Visa</p>
+        <p>&copy; 2024 Portal de Informações Negociação Visa</p>
     </footer>
+
+    <script>
+        function copyLink() {
+            const link = window.location.href;
+            navigator.clipboard.writeText(link).then(() => {
+                alert("Link copiado: " + link);
+            });
+        }
+    </script>
+
 </body>
 </html>
