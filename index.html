@@ -1,426 +1,83 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal de Informações Negociação Visa</title>
+    <link rel="stylesheet" href="style.css"> <!-- Incluindo o CSS externo -->
     <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #00263a; /* Fundo azul escuro */
+            color: #cfdfe5; /* Texto branco/cinza claro */
             margin: 0;
             padding: 0;
-            background-color: #f0f8ff; /* Azul Céu */
-            color: #333;
         }
 
-        header {
-            background-color: #1e90ff; /* Azul Céu Intenso */
-            padding: 20px;
+        header, footer {
+            background-color: #004a80; /* Fundo do cabeçalho e rodapé azul médio escuro */
+            color: white;
+            padding: 10px 0;
             text-align: center;
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        nav {
-            display: flex;
-            justify-content: center;
-            background-color: #4682b4;
-            padding: 15px;
-            position: sticky;
-            top: 60px;
-            z-index: 9;
+        h1 {
+            margin: 0;
+            font-size: 24px;
         }
 
-        nav a {
-            color: white;
-            margin: 0 20px;
-            text-decoration: none;
-            font-weight: bold;
-            cursor: pointer;
-            position: relative;
-            transition: transform 0.3s;
+        h2 {
+            color: #b8c9d1; /* Texto da seção "Hora a Hora" */
         }
 
-        nav a:hover {
-            text-decoration: underline;
-            transform: scale(1.1);
-        }
-
-        .tab-content {
-            display: none;
+        .section-background {
+            background-color: #00364a; /* Fundo mais claro para destacar os botões */
             padding: 30px;
-            background-color: #e6f7ff;
+            border-radius: 10px;
             text-align: center;
-            opacity: 0;
-            transition: opacity 0.5s ease, transform 0.5s ease;
-            transform: translateY(30px);
-        }
-
-        .tab-content.active {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
+            margin: 20px;
         }
 
         .link-button {
             display: inline-block;
             padding: 15px 25px;
             margin: 20px 10px;
-            background-color: #1e90ff;
+            background-color: #0066cc; /* Azul brilhante para os botões */
             color: white;
             text-decoration: none;
             font-weight: bold;
             border-radius: 5px;
             transition: background-color 0.3s, transform 0.3s;
+            border: 2px solid #005bb5; /* Borda azul mais escura */
         }
 
         .link-button:hover {
-            background-color: #4682b4;
-            transform: scale(1.05);
+            background-color: #005bb5; /* Azul mais escuro no hover */
+            transform: scale(1.05); /* Leve aumento ao passar o mouse */
         }
 
         footer {
-            background-color: #4682b4;
-            padding: 20px;
-            text-align: center;
-            color: white;
-        }
-
-        .copy-link-button {
-            background-color: #1e90ff;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-
-        .copy-link-button:hover {
-            background-color: #4682b4;
-        }
-
-        .consolidado-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            padding: 20px;
-        }
-
-        .col {
-            width: 48%;
-            background-color: #d3eaf7;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        .col img {
+            position: fixed;
             width: 100%;
-            height: auto;
-            margin-top: 10px;
-            border-radius: 5px;
-        }
-
-        .col h3 {
-            margin-bottom: 15px;
-            color: #1e90ff;
-        }
-
-        .col p {
-            color: #333;
-        }
-
-        /* Estilo para sub-seções de Acesso a Informações */
-        .info-section {
-            width: 48%;
-            margin-bottom: 20px;
-            padding: 20px;
-            background-color: #d3eaf7;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.3s;
-        }
-
-        .info-section img {
-            display: none;
-            width: 100%;
-            height: auto;
-            margin-top: 10px;
-            border-radius: 5px;
-        }
-
-        .info-section h3 {
-            margin-bottom: 15px;
-            color: #1e90ff;
-        }
-
-        .info-section:hover {
-            transform: scale(1.05);
-        }
-
-        /* Estilo para mostrar as imagens ao clicar */
-        .info-section.active img {
-            display: block;
+            bottom: 0;
         }
     </style>
-    <script>
-        function showTabContent(tabId) {
-            var contents = document.getElementsByClassName('tab-content');
-            for (var i = 0; i < contents.length; i++) {
-                contents[i].classList.remove('active');
-            }
-            var activeContent = document.getElementById(tabId);
-            activeContent.classList.add('active');
-        }
-
-        function toggleSection(sectionId) {
-            var section = document.getElementById(sectionId);
-            section.classList.toggle('active');
-        }
-    </script>
 </head>
 <body>
-
-    <!-- Cabeçalho -->
     <header>
         <h1>Portal de Informações Negociação Visa</h1>
     </header>
 
-    <!-- Menu de Navegação -->
-    <nav>
-        <a onclick="showTabContent('inicio')">Início</a>
-        <a onclick="showTabContent('hora-a-hora')">Hora a Hora</a>
-        <a onclick="showTabContent('qualidade')">Qualidade</a>
-        <a onclick="showTabContent('consolidado')">Consolidado</a>
-        <a onclick="showTabContent('acesso-info')">Acesso a Informações</a>
-    </nav>
-
-    <!-- Conteúdo das Abas -->
-    <div id="inicio" class="tab-content active">
-        <h1>Início</h1>
-        <div>
-            <a href="https://bcardapp01.grupoadrianocobuccio.com.br:9100/vosagent/" target="_blank" class="link-button">Acessar Vos</a>
-            <a href="https://backoffice.bcarddigital.com.br/admin/home" target="_blank" class="link-button">Acessar BKO</a>
-            <a href="https://www.google.com/url?q=https%3A%2F%2Fback.pontotel.com.br%2Fapi%2Fredirect-saml%2Fbateponto%2Fbrasilcard-pontotel&sa=D&sntz=1&usg=AOvVaw3kUPN-qId0m2P6JQXPbcDK" target="_blank" class="link-button">Acessar Pontotel</a>
-            <a href="https://10.20.225.35/PortalCDT/(S(fhafub454dukv5nv1tpzi155))/Pages/index.aspx" target="_blank" class="link-button">Acessar Cs</a>
+    <main>
+        <div class="section-background">
+            <h2>Hora a Hora</h2>
+            <a href="atv.html" class="link-button">Acordos - Negociação e Cobrança</a>
+            <a href="campa.html" class="link-button">Acompanhamento - Acordos</a>
         </div>
-        <button class="copy-link-button" onclick="copyLink()">Compartilhar Link do Site</button>
-    </div>
+    </main>
 
-    <div id="hora-a-hora" class="tab-content">
-        <h2>Hora a Hora</h2>
-        <div>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSd4q0mpHN58o0RCM0AI3GZO8Vc7W-EH_gTkXgoSMFGtm6JdAA/viewform?pli=1&pli=1" target="_blank" class="link-button">Acordos - Negociação e Cobrança</a>
-            <a href="https://lookerstudio.google.com/reporting/e73ca503-25be-43b8-a622-c83c3120f1de/page/6C1DE" target="_blank" class="link-button">Acompanhamento - Acordos</a>
-        </div>
-    </div>
-
-    <div id="consolidado" class="tab-content">
-        <h2>Consolidado</h2>
-        <div class="consolidado-container">
-            <div class="col">
-                <h3>Receptivo</h3>
-                <p>Dados e relatórios de atendimento receptivo.</p>
-                <img src="recept.png" alt="Imagem Receptivo">
-            </div>
-            <div class="col">
-                <h3>Cobrança</h3>
-                <p>Dados e relatórios de cobrança.</p>
-                <img src="atv.png" alt="Imagem Cobrança">
-            </div>
-        </div>
-    </div>
-
-    <div id="acesso-info" class="tab-content">
-        <h2>Acesso a Informações</h2>
-        <div class="consolidado-container">
-            <div class="info-section" onclick="toggleSection('escala-section')">
-                <h3>Escala</h3>
-                <img src="escala.png" alt="Imagem Escala" id="escala-section">
-            </div>
-            <div class="info-section" onclick="toggleSection('campanha-section')">
-                <h3>Campanha</h3>
-                <img src="campa.png" alt="Imagem Campanha" id="campanha-section">
-            </div>
-        </div>
-    </div>
-
-    <!-- Rodapé -->
     <footer>
         <p>&copy; 2024 Portal de Informações Negociação Visa. Todos os direitos reservados.</p>
     </footer>
-
 </body>
 </html>
-
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #00263a; /* Azul Escuro */
-    color: #ffffff; /* Texto branco */
-}
-
-header {
-    background-color: #004a80; /* Azul Médio Escuro */
-    padding: 20px;
-    text-align: center;
-    color: white;
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-nav {
-    display: flex;
-    justify-content: center;
-    background-color: #003956; /* Azul Escuro (mais claro que o fundo) */
-    padding: 15px;
-    position: sticky;
-    top: 60px;
-    z-index: 9;
-}
-
-nav a {
-    color: white;
-    margin: 0 20px;
-    text-decoration: none;
-    font-weight: bold;
-    cursor: pointer;
-    position: relative;
-    transition: transform 0.3s;
-}
-
-nav a:hover {
-    text-decoration: underline;
-    transform: scale(1.1);
-}
-
-.tab-content {
-    display: none;
-    padding: 30px;
-    background-color: #002b3e; /* Azul Escuro um pouco mais claro */
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.5s ease, transform 0.5s ease;
-    transform: translateY(30px);
-}
-
-.tab-content.active {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.link-button {
-    display: inline-block;
-    padding: 15px 25px;
-    margin: 20px 10px;
-    background-color: #004a80; /* Azul Médio */
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.link-button:hover {
-    background-color: #003c64; /* Azul mais escuro no hover */
-    transform: scale(1.05);
-}
-
-footer {
-    background-color: #004a80; /* Azul Médio Escuro */
-    padding: 20px;
-    text-align: center;
-    color: white;
-}
-
-.copy-link-button {
-    background-color: #004a80;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
-.copy-link-button:hover {
-    background-color: #003c64; /* Hover do botão */
-}
-
-.consolidado-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 20px;
-}
-
-.col {
-    width: 48%;
-    background-color: #004a80; /* Azul médio para caixas */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.col img {
-    width: 100%;
-    height: auto;
-    margin-top: 10px;
-    border-radius: 5px;
-}
-
-.col h3 {
-    margin-bottom: 15px;
-    color: #ffffff; /* Texto branco */
-}
-
-.col p {
-    color: #cfdfe5; /* Texto secundário */
-}
-
-/* Estilo para sub-seções de Acesso a Informações */
-.info-section {
-    width: 48%;
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: #004a80; /* Azul médio para caixas */
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.info-section img {
-    display: none;
-    width: 100%;
-    height: auto;
-    margin-top: 10px;
-    border-radius: 5px;
-}
-
-.info-section h3 {
-    margin-bottom: 15px;
-    color: #ffffff;
-}
-
-.info-section:hover {
-    transform: scale(1.05);
-}
-
-/* Estilo para mostrar as imagens ao clicar */
-.info-section.active img {
-    display: block;
-}
