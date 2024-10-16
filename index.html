@@ -241,41 +241,21 @@
     <div id="acesso-info" class="tab-content">
         <h2>Acesso a Informações</h2>
         <div class="consolidado-container">
-         <div class="info-section" onclick="toggleSection('escala-section')">
-    <h3>Escala</h3>
-    <img id="escala-section-img" src="escala.png" alt="escala.png">
-</div>
-
+            <div class="info-section" onclick="toggleSection('escala-section')">
+                <h3>Escala</h3>
+                <img src="escala.png" alt="Imagem Escala" id="escala-section">
+            </div>
             <div class="info-section" onclick="toggleSection('campanha-section')">
                 <h3>Campanha</h3>
-                <img id="campanha-section" src="campa.png" alt="campanha.png">
-            </div>
-        </div>
-
-        <div class="consolidado-container">
-            <div class="info-section" onclick="toggleSection('baixas-section')">
-                <h3>Baixas de Pagamentos</h3>
-                <img id="baixas-section" src="#" alt="Imagem Baixas">
-            </div>
-            <div class="info-section" onclick="toggleSection('avisos-section')">
-                <h3>Avisos / Informações</h3>
-                <img id="avisos-section" src="#" alt="Imagem Avisos">
+                <img src="campa.png" alt="Imagem Campanha" id="campanha-section">
             </div>
         </div>
     </div>
 
+    <!-- Rodapé -->
     <footer>
-        <p>&copy; 2024 Portal de Informações Negociação Visa</p>
+        <p>&copy; 2024 Portal de Informações Negociação Visa. Todos os direitos reservados.</p>
     </footer>
-
-    <script>
-        function copyLink() {
-            const link = window.location.href;
-            navigator.clipboard.writeText(link).then(() => {
-                alert("Link copiado: " + link);
-            });
-        }
-    </script>
 
 </body>
 </html>
