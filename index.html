@@ -34,7 +34,7 @@
             z-index: 9;
         }
 
-        nav a {
+        nav a, nav button {
             color: white;
             margin: 0 20px;
             text-decoration: none;
@@ -42,9 +42,12 @@
             cursor: pointer;
             position: relative;
             transition: transform 0.3s;
+            background: none;
+            border: none;
+            font-size: 16px;
         }
 
-        nav a:hover {
+        nav button:hover {
             text-decoration: underline;
             transform: scale(1.1);
         }
@@ -169,6 +172,19 @@
         .info-section.active img {
             display: block;
         }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .consolidado-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .col, .info-section {
+                width: 100%;
+                margin-bottom: 20px;
+            }
+        }
     </style>
     <script>
         function showTabContent(tabId) {
@@ -184,6 +200,22 @@
             var section = document.getElementById(sectionId);
             section.classList.toggle('active');
         }
+
+        function copyLink() {
+            const link = window.location.href;
+            navigator.clipboard.writeText(link).then(() => {
+                alert("Link copiado: " + link);
+                // Altera o texto e a cor do botão temporariamente
+                const button = document.querySelector('.copy-link-button');
+                button.textContent = "Link Copiado!";
+                button.style.backgroundColor = "#32CD32"; // Verde
+
+                setTimeout(() => {
+                    button.textContent = "Compartilhar Link do Site";
+                    button.style.backgroundColor = "#1e90ff"; // Volta ao original
+                }, 3000);
+            });
+        }
     </script>
 </head>
 <body>
@@ -195,11 +227,11 @@
 
     <!-- Menu de Navegação -->
     <nav>
-        <a onclick="showTabContent('inicio')">Início</a>
-        <a onclick="showTabContent('hora-a-hora')">Hora a Hora</a>
-        <a onclick="showTabContent('qualidade')">Qualidade</a>
-        <a onclick="showTabContent('consolidado')">Consolidado</a>
-        <a onclick="showTabContent('acesso-info')">Acesso a Informações</a>
+        <button onclick="showTabContent('inicio')">Início</button>
+        <button onclick="showTabContent('hora-a-hora')">Hora a Hora</button>
+        <button onclick="showTabContent('qualidade')">Qualidade</button>
+        <button onclick="showTabContent('consolidado')">Consolidado</button>
+        <button onclick="showTabContent('acesso-info')">Acesso a Informações</button>
     </nav>
 
     <!-- Conteúdo das Abas -->
@@ -226,14 +258,14 @@
         <h2>Consolidado</h2>
         <div class="consolidado-container">
             <div class="col">
-                <h3>Receptivo</h3>
-                <p>Dados e relatórios de atendimento receptivo.</p>
-                <img src="C:/Users/FRANCINALDO.SANTOS/Downloads/image_2024_10_11T20_20_36_070Z.png" alt="Imagem Receptivo">
+                <h3>Negociação e Cobrança</h3>
+                <p>Veja a consolidação de acordos e negociações realizados.</p>
+                <img src="https://github.com/seu-repositorio/atv.png" alt="Imagem Cobrança">
             </div>
             <div class="col">
-                <h3>Cobrança</h3>
-                <p>Dados e relatórios de cobrança.</p>
-                <img src="C:/Users/FRANCI~1.SAN/AppData/Local/Temp/f0f4aa2998bc6a8dd1a1ffa55271e97c79b26114e67d9dd359c08751ecb57754.png" alt="Imagem Cobrança">
+                <h3>Campanha</h3>
+                <p>Acompanhe as campanhas ativas e seus resultados.</p>
+                <img src="https://github.com/seu-repositorio/campa.png" alt="Imagem Campanha">
             </div>
         </div>
     </div>
@@ -241,40 +273,21 @@
     <div id="acesso-info" class="tab-content">
         <h2>Acesso a Informações</h2>
         <div class="consolidado-container">
-            <div class="info-section" onclick="toggleSection('escala-section')">
+            <div class="info-section" id="info1" onclick="toggleSection('info1')">
                 <h3>Escala</h3>
-                <img id="escala-section" src="#" alt="Imagem Escala">
+                <img src="https://github.com/seu-repositorio/escala.png" alt="Imagem Escala">
             </div>
-            <div class="info-section" onclick="toggleSection('campanha-section')">
-                <h3>Campanha</h3>
-                <img id="campanha-section" src="C:/Users/FRANCI~1.SAN/AppData/Local/Temp/bcd427bb91275db8c22637532e3eded57eb41322d5a19bfb5cdaa2485a201a1a.png" alt="Imagem Campanha">
-            </div>
-        </div>
-
-        <div class="consolidado-container">
-            <div class="info-section" onclick="toggleSection('baixas-section')">
-                <h3>Baixas de Pagamentos</h3>
-                <img id="baixas-section" src="#" alt="Imagem Baixas">
-            </div>
-            <div class="info-section" onclick="toggleSection('avisos-section')">
-                <h3>Avisos / Informações</h3>
-                <img id="avisos-section" src="#" alt="Imagem Avisos">
+            <div class="info-section" id="info2" onclick="toggleSection('info2')">
+                <h3>Receptivo</h3>
+                <img src="https://github.com/seu-repositorio/recept.png" alt="Imagem Receptivo">
             </div>
         </div>
     </div>
 
+    <!-- Rodapé -->
     <footer>
-        <p>&copy; 2024 Portal de Informações Negociação Visa</p>
+        <p>© 2024 Brasil Card Visa. Todos os direitos reservados.</p>
     </footer>
-
-    <script>
-        function copyLink() {
-            const link = window.location.href;
-            navigator.clipboard.writeText(link).then(() => {
-                alert("Link copiado: " + link);
-            });
-        }
-    </script>
 
 </body>
 </html>
