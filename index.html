@@ -201,7 +201,7 @@
         <a onclick="showTabContent('qualidade')">Qualidade</a>
         <a onclick="showTabContent('consolidado')">Consolidado</a>
         <a onclick="showTabContent('acesso-info')">Acesso a Informações</a>
-        <a onclick="showTabContent('campanha')">Campanha</a>
+        <a onclick="showTabContent('campanha')">Ranking de Classificação</a>
     </nav>
 
     <!-- Conteúdo das Abas -->
@@ -233,6 +233,56 @@
                 <img src="https://raw.githubusercontent.com/seu-usuario/seu-repositorio/main/recept.png" alt="Imagem Receptivo">
             </div>
             <div class="col">
-                <h3>Cobrança</h3>
-                <p>Dados e relatórios de cobrança.</p>
-                <img src="https://raw.githubusercontent.com/seu-usuario/seu-repositorio/main/atv.png" alt="Imagem Cobrança">
+                <h3>Ativo</h3>
+                <p>Dados e relatórios de atendimento ativo.</p>
+                <img src="https://raw.githubusercontent.com/seu-usuario/seu-repositorio/main/atv.png" alt="Imagem Ativo">
+            </div>
+        </div>
+    </div>
+
+    <div id="acesso-info" class="tab-content">
+        <h2>Acesso a Informações</h2>
+        <div>
+            <div class="info-section" id="cobranca" onclick="toggleSection('cobranca')">
+                <h3>Negociação e Cobrança</h3>
+                <img src="https://raw.githubusercontent.com/seu-usuario/seu-repositorio/main/atv.png" alt="Cobrança">
+            </div>
+            <div class="info-section" id="escala" onclick="toggleSection('escala')">
+                <h3>Escala</h3>
+                <img src="https://raw.githubusercontent.com/seu-usuario/seu-repositorio/main/escala.png" alt="Escala">
+            </div>
+        </div>
+        <div>
+            <div class="info-section" id="resultado-campanha" onclick="toggleSection('resultado-campanha')">
+                <h3>Resultado Campanha Deliçia</h3>
+                <!-- Espaço para adição futura de imagem ou conteúdo -->
+            </div>
+            <div class="info-section" id="mascara-campanha" onclick="toggleSection('mascara-campanha')">
+                <h3>Mascara Campanha Novembro</h3>
+                <!-- Espaço para adição futura de imagem ou conteúdo -->
+            </div>
+        </div>
+    </div>
+
+    <div id="campanha" class="tab-content">
+        <h2>Ranking de Classificação</h2>
+        <p>Acompanhe o ranking atualizado da campanha.</p>
+        <a href="https://docs.google.com/spreadsheets/d/1f25-WJWR-quqjaX6FgXIFxs-de7nSBXxmNMUBf3hrps/edit?gid=1621819121#gid=1621819121" target="_blank" class="link-button">Acessar Ranking de Classificação</a>
+        <img src="https://raw.githubusercontent.com/seu-usuario/seu-repositorio/main/campa.png" alt="Imagem Campanha">
+    </div>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>© 2024 Portal de Informações Negociação Visa</p>
+    </footer>
+
+    <script>
+        function copyLink() {
+            var link = "https://naldosantosr.github.io/portal-visa--negocia-o/";
+            navigator.clipboard.writeText(link).then(function() {
+                alert('Link copiado para a área de transferência.');
+            });
+        }
+    </script>
+</body>
+</html>
