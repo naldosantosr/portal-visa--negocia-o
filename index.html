@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal de Informações Negociação Visa</title>
     <style>
-        /* Paleta de cores baseada na imagem */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #01304D; /* Fundo Escuro */
-            color: #FFFFFF; /* Texto Branco */
+            background-color: #01304D;
+            color: #FFFFFF;
         }
 
         header {
-            background-color: #0B518C; /* Azul Claro */
+            background-color: #0B518C;
             padding: 20px;
             text-align: center;
             color: white;
@@ -28,7 +27,7 @@
         nav {
             display: flex;
             justify-content: center;
-            background-color: #0A3E6F; /* Azul Médio */
+            background-color: #0A3E6F;
             padding: 15px;
             position: sticky;
             top: 60px;
@@ -53,7 +52,7 @@
         .tab-content {
             display: none;
             padding: 30px;
-            background-color: #0A3E6F; /* Fundo da aba */
+            background-color: #0A3E6F;
             text-align: center;
             opacity: 0;
             transition: opacity 0.5s ease, transform 0.5s ease;
@@ -70,7 +69,7 @@
             display: inline-block;
             padding: 15px 25px;
             margin: 20px 10px;
-            background-color: #0B518C; /* Botões com Azul mais claro */
+            background-color: #0B518C;
             color: white;
             text-decoration: none;
             font-weight: bold;
@@ -136,7 +135,6 @@
             color: #FFFFFF;
         }
 
-        /* Estilo para sub-seções de Acesso a Informações */
         .info-section {
             width: 48%;
             margin-bottom: 20px;
@@ -166,7 +164,6 @@
             transform: scale(1.05);
         }
 
-        /* Estilo para mostrar as imagens ao clicar */
         .info-section.active img {
             display: block;
         }
@@ -189,12 +186,10 @@
 </head>
 <body>
 
-    <!-- Cabeçalho -->
     <header>
         <h1>Portal de Informações Negociação Visa</h1>
     </header>
 
-    <!-- Menu de Navegação -->
     <nav>
         <a onclick="showTabContent('inicio')">Início</a>
         <a onclick="showTabContent('hora-a-hora')">Hora a Hora</a>
@@ -204,7 +199,6 @@
         <a onclick="showTabContent('campanha')">Ranking de Classificação</a>
     </nav>
 
-    <!-- Conteúdo das Abas -->
     <div id="inicio" class="tab-content active">
         <h1>Início</h1>
         <div>
@@ -241,47 +235,39 @@
             <div class="col">
                 <h3>Ativo</h3>
                 <p>Dados e relatórios de atendimento ativo.</p>
-                <img src="atv.png" alt="Imagem Ativo">
+                <img src="ativo.png" alt="Imagem Ativo">
             </div>
         </div>
     </div>
 
     <div id="acesso-info" class="tab-content">
         <h2>Acesso a Informações</h2>
-        <div>
-            <div class="info-section" id="escala" onclick="toggleSection('escala')">
-                <h3>Escala</h3>
-                <img src="escala.png" alt="Escala">
-            </div>
-            <div class="info-section" id="baixas" onclick="toggleSection('baixas')">
-                <h3>Baixas</h3>
-                <img src="baixas.png" alt="Baixas">
-            </div>
+        <div class="info-section" id="resultado-campanha" onclick="toggleSection('resultado-campanha')">
+            <h3>Resultado Campanha Deliçia</h3>
+            <img src="resul_camp.png" alt="Imagem Campanha">
         </div>
-        <div>
-            <div class="info-section" id="resultado-campanha" onclick="toggleSection('resultado-campanha')">
-                <h3>Resultado Campanha Deliçia</h3>
-                <<img src="resul_camp.png" alt="Imagem Campanha"> <!-- Espaço para adição futura de imagem ou conteúdo -->
-            </div>
+        <div class="info-section" id="mascara-campanha" onclick="toggleSection('mascara-campanha')">
+            <h3>Máscara Campanha Novembro</h3>
+            <img src="masc_plan_nov.png" alt="Máscara Campanha Novembro">
         </div>
     </div>
 
     <div id="campanha" class="tab-content">
-        <h2>Campanha da Auditoria</h2>
-        <p>Acompanhe o ranking atualizado da campanha.</p>
+        <h2>Ranking de Classificação</h2>
         <a href="https://docs.google.com/spreadsheets/d/1f25-WJWR-quqjaX6FgXIFxs-de7nSBXxmNMUBf3hrps/edit?gid=1621819121#gid=1621819121" target="_blank" class="link-button">Acessar Ranking de Classificação</a>
     </div>
 
-    <!-- Rodapé -->
     <footer>
-        <p>© 2024 Portal de Informações Negociação Visa</p>
+        <p>Todos os direitos reservados &copy; 2023</p>
     </footer>
 
     <script>
         function copyLink() {
             var link = "https://naldosantosr.github.io/portal-visa--negocia-o/";
             navigator.clipboard.writeText(link).then(function() {
-                alert('Link copiado para a área de transferência.');
+                alert('Link copiado para a área de transferência: ' + link);
+            }).catch(function(err) {
+                console.error('Erro ao copiar o link: ', err);
             });
         }
     </script>
